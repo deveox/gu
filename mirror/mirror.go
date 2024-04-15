@@ -33,11 +33,16 @@ func DerefValue(v reflect.Value) reflect.Value {
 // v := New[**int]() is not supported
 func New[T any]() (T, reflect.Type) {
 	t := reflect.TypeFor[T]()
+	v := NewFor(t)
+	return v.(T), t
+}
+
+func NewFor(t reflect.Type) any {
 	i := reflect.New(DerefType(t))
 	switch t.Kind() {
 	case reflect.Ptr, reflect.Interface:
-		return i.Interface().(T), t
+		return i.Interface()
 	default:
-		return i.Elem().Interface().(T), t
+		return i.Elem().Interface()
 	}
 }
