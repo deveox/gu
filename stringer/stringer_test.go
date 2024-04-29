@@ -8,6 +8,7 @@ import (
 
 func TestToSnakeCase(t *testing.T) {
 	require.Equal(t, "id", ToSnakeCase("ID"))
+	require.Equal(t, "iso3", ToCamelCase("iso3"))
 	require.Equal(t, "ticket", ToSnakeCase("Ticket"))
 	require.Equal(t, "ticket_id", ToSnakeCase("TicketID"))
 	require.Equal(t, "ticket_id_name", ToSnakeCase("TicketIDName"))
@@ -21,6 +22,7 @@ func TestToSnakeCase(t *testing.T) {
 
 func TestToCamelCase(t *testing.T) {
 	require.Equal(t, "id", ToCamelCase("ID"))
+	require.Equal(t, "iso3", ToCamelCase("ISO3"))
 	require.Equal(t, "ticket", ToCamelCase("Ticket"))
 	require.Equal(t, "ticketId", ToCamelCase("TicketID"))
 	require.Equal(t, "ticketIdName", ToCamelCase("TicketIDName"))

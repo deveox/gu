@@ -30,7 +30,7 @@ func ToCamelCase(s string) string {
 			}
 			continue
 		default:
-			if unicode.IsUpper(rune(s[idx])) && unicode.IsUpper(rune(s[idx-1])) && (idx+1 == len(s) || unicode.IsUpper(rune(s[idx+1]))) {
+			if unicode.IsUpper(rune(s[idx])) && unicode.IsUpper(rune(s[idx-1])) && (idx+1 == len(s) || !unicode.IsLower(rune(s[idx+1]))) {
 				n.WriteRune(unicode.ToLower(rune(s[idx])))
 				continue
 			}
